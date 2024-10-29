@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Actions from "./actions";
+import { PageSwap } from "../pages/pageswap";
 
 const Wrapper = styled.div`
   width: 600px;
@@ -32,15 +33,8 @@ const PageLayout = styled.div`
   justify-content: space-between;
 `;
 
-const PrintPhoto = styled.div`
-  width: calc(50% - 10px);
-
-  img {
-    max-width: 100%;
-  }
-`;
-
 export default function PrintPage({ data }) {
+
   return (
     <>
       <Wrapper>
@@ -52,13 +46,17 @@ export default function PrintPage({ data }) {
                 <Actions />
               </Header>
               <PageLayout>
-                {entry.images.map((image) => {
-                  return (
-                    <PrintPhoto key={image}>
-                      <img src={image} alt="" />
-                    </PrintPhoto>
-                  );
-                })}
+                {/* {entry.images.map((image) => {
+                    return (
+                      <PrintPhoto key={image}>
+                        <img src={image} alt="" />
+                      </PrintPhoto>
+                    );
+                  })} */}
+                <PageSwap 
+                  key={i}
+                  imgData={entry.images}
+                />
               </PageLayout>
             </PrintWrapper>
           );
