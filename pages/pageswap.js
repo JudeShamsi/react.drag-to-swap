@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 /* 
@@ -12,7 +12,7 @@ import styled from "styled-components";
 
     https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dragover_event
     https://www.youtube.com/watch?v=u65Y-vqYNAk&ab_channel=WebDevCody
-    
+
 */
 const PrintPhoto = styled.div`
   width: calc(50% - 10px);
@@ -22,19 +22,12 @@ const PrintPhoto = styled.div`
   }
 `;
 
-export const PageSwap = ({imgData}) => {
+export const PageSwap = ({imgData, setLastEdited}) => {
 
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(
+        imgData.map((src, index) => ({ id: index, src }))
+      );
     const [draggedIdx, setDraggedIdx] = useState(null);
-
-    useEffect(() => {
-        // Set each image with an idx so we can perform the swaps more easily
-        const imgObjArray = imgData.map((src, i) => ({
-          idx: i,
-          src,
-        }));
-        setItems(imgObjArray);
-      }, [imgData]); 
 
       /* 
         when a user selects an image, grab the Idx of the selected image
@@ -50,6 +43,7 @@ export const PageSwap = ({imgData}) => {
         and use it to perform the swap of the images.
     */
     const handleDragDrop = (e, droppedIdx) => {
+        setLastEdited();
         if(draggedIdx !== null && draggedIdx !== droppedIdx) { // only perform the swap if we aren't swapping with the image we selected initially
             const newItems = [...items];
             [newItems[draggedIdx], newItems[droppedIdx]] = [newItems[droppedIdx], newItems[draggedIdx]];
