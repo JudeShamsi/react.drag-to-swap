@@ -132,16 +132,16 @@ export default function Testpage({}) {
         <h1>Trip to the Beach</h1>
         <p>{lastEdited}</p>
         <SwitchIcon>
-          <p class={useManual ? "toggle-off" : "toggle-on"}>react-dnd-kit</p>
-          <label class="switch">
+          <p className={useManual ? "toggle-off" : "toggle-on"}>react-dnd-kit</p>
+          <label className="switch">
             <input 
             type="checkbox"
             checked={useManual}
             onChange={handleToggle}
             />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
-          <p class={useManual ? "toggle-on" : "toggle-off"}>manual code</p>
+          <p className={useManual ? "toggle-on" : "toggle-off"}>manual code</p>
       </SwitchIcon>
       </PageHeader>
       <PrintPage
