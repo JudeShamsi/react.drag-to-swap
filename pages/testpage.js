@@ -102,6 +102,14 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.toggle-off {
+  color: #ccc
+}
+
+.toggle-on {
+  color: #2778a5;
+}
 `
 
 export default function Testpage({}) {
@@ -124,7 +132,7 @@ export default function Testpage({}) {
         <h1>Trip to the Beach</h1>
         <p>{lastEdited}</p>
         <SwitchIcon>
-          <p>react-dnd-kit</p>
+          <p class={useManual ? "toggle-off" : "toggle-on"}>react-dnd-kit</p>
           <label class="switch">
             <input 
             type="checkbox"
@@ -133,7 +141,7 @@ export default function Testpage({}) {
             />
             <span class="slider round"></span>
           </label>
-          <p>manual code</p>
+          <p class={useManual ? "toggle-on" : "toggle-off"}>manual code</p>
       </SwitchIcon>
       </PageHeader>
       <PrintPage
